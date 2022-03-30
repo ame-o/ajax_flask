@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update Vocabulary</title>
+    <link 
+        rel="stylesheet" 
+        type="text/css" 
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+<!DOCTYPE html>
+<html>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <h1 class="title">
+                Hello {{logged_in.username}}!
+            </h1>
+            <a href="/myvocab" class="navbar-item">
+                My Vocabulary Words
+            </a>
+            <a href="/dashboard" class="navbar-item">
+                Dashboard
+            </a>
+            <div class="buttons">
+                <a href="/logout" class="button is-light">
+                    Log Out
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- the real stuff below -->
+    <section class="section">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <h1 class="title">
+                        Edit {{one_vocab.spelling}}
+                    </h1>
+                    <form action="/edit/process" method="post">
+                        <input type="hidden" name="user_id" value="{{logged_in.id}}">
+                        <input type="hidden" name="id" value="{{one_vocab.id}}">
+                        <label for="=name">Vocabulary Word</label>
+                        <input type="text" name="name" value="{{one_vocab.spelling}}">
+                        <label for="definition">Definition</label>
+                        <input type="textarea" name="definition" value="{{one_vocab.definition}}">
+                        <label for="sentence">Use it in a sentence:</label>
+                        <input type="textarea" name="sentence" value="{{one_vocab.sentence}}">
+                        <input type="submit" value="Update">
+                    </form>
+                </div>
+                <div class="column">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</div>
+</section>
+</body>
+
+</html>
+
+</div>
+</section>
+</body>
+
+</html>

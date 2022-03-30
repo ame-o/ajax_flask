@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update Vocabulary</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div class="whole-page flex">
+        <nav class="nav flex" role="navigation" aria-label="main navigation">
+            <div class="navbar flex">
+                <h1 class="title">
+                    Hello ~logged_in.username~
+                </h1>
+            </div>
+            <a href="/myvocab" class="navbar-item">
+                My Vocabulary Words
+            </a>
+            <div class="navbar flex">
+                <a href="/new/vocab" class="navbar-item">
+                    New Vocabulary Words
+                </a>
+            </div>
+            <div class="navbar flex">
+                <div class="buttons">
+                    <a href="/logout">
+                        Log Out
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- the real stuff below -->
+    <main>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <!-- main body -->
+        <div class="columns flex">
+            <div class="blank">BLANK</div>
+            <div class="leftcol flex">L-COL
+                <div class="l-1">
+                    <h1 class="title">
+                        Edit ~one_vocab.spelling~
+                    </h1>
+                    <form action="/edit/vocab/process" method="post">
+                        <input type="hidden" name="user_id" value="~logged_in.id~">
+                        <input type="hidden" name="id" value="~one_vocab.id~">
+                        <label for="=name">Vocabulary Word</label>
+                        <input type="text" name="name" value="~one_vocab.spelling~">
+                        <label for="definition">Definition</label>
+                        <input type="textarea" cols="20" rows="6" name="definition" value="~one_vocab.definition~">
+                        <label for="sentence">Use it in a sentence:</label>
+                        <input type="textarea" cols="20" rows="6" name="sentence" value="~one_vocab.sentence~">
+                        <input type="submit" value="Update">
+                    </form>
+                    <br><br><br>
+                    <button href="/delete/vocab/~vocab.id~">Delete ?</button>
+                </div>
+
+            </div>
+            <div class="column">
+            </div>
+            <div class="blank">BLANK</div>
+        </div>
+    </main>
+</body>
+</div>
+</section>
+</body>
+
+</html>
+
+</div>
+</section>
+</body>
+
+</html>

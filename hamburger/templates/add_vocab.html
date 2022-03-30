@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add New Vocab</title>
+    <link 
+    rel="stylesheet" 
+    type="text/css" 
+    href="{{ url_for('static', filename='css/style.css') }}"
+>
+
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar">
+            <h1 class="title">
+                Hello {{logged_in.username}}!
+            </h1>
+            <a href="/myvocab" class="navbar-item">
+                My Vocabulary Words
+            </a>
+            <a href="/dashboard" class="navbar-item">
+                Dashboard
+            </a>
+            <div class="buttons">
+                <a href="/logout" class="button is-light">
+                    Log Out
+                </a>
+            </div>
+        </nav>
+    </nav>
+    <!-- the real stuff below -->
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    <h1 class="title">
+                        Add A New Vocabulary Word
+                    </h1>
+                    <form action="/new/process" method="post">
+                        <input type="hidden" name="user_id" value="{{user_id}}">
+                        <label for="spelling">Vocabulary Word</label>
+                        <input type="text" name="spelling">
+                        <label for="definition">Definition</label>
+                        <input type="textarea" name="definition">
+                        <label for="sentence">Use it in a sentence:</label>
+                        <input type="textarea" name="sentence">
+                        <input type="submit" value="Create">
+                    </form>
+                </div>
+            </div>
+    </section>
+</body>
+</div>
+</section>
+</body>
+
+</html>

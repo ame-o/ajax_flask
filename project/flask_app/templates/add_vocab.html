@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add New Vocab</title>
+    <link 
+    rel="stylesheet" 
+    type="text/css" 
+    href="{{ url_for('static', filename='css/style.css') }}"
+>
+
+</head>
+
+<body>
+    <div class="whole-page flex">
+        <nav class="nav flex" role="navigation" aria-label="main navigation">
+            <div class="navbar flex">
+                <h1 class="title">
+                    Hello ~logged_in.username~
+                </h1>
+            </div>
+            <a href="/myvocab" class="navbar-item">
+                My Vocabulary Words
+            </a>
+            <div class="navbar flex">
+                <a href="/new/vocab" class="navbar-item">
+                    New Vocabulary Words
+                </a>
+            </div>
+            <div class="navbar flex">
+                <div class="buttons">
+                    <a href="/logout">
+                        Log Out
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <!-- the real stuff below -->
+        <main>
+            <!-- main body -->
+            <div class="columns flex">
+                <div class="blank"> </div>
+                <div class="leftcol flex">
+                    <div class="l-1">
+                        <h1 class="title">
+                            Add A New Vocabulary Word
+                        </h1>
+                        <form action="/new/vocab/process" method="post">
+                            <input type="hidden" name="user_id" value="{{user_id}}">
+                            <label for="spelling">Vocabulary Word</label>
+                            <input type="text" name="spelling">
+                            <label for="definition">Definition</label>
+                            <input type="textarea" name="definition">
+                            <label for="sentence">Use it in a sentence:</label>
+                            <input type="textarea" name="sentence">
+                            <input type="submit" value="Create">
+                        </form>
+                    </div>
+                </div>
+                <div class="blank"> </div>
+            </div>
+        </main>
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>This Week's Vocabulary Words</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+    <div class="whole-page flex">
+        <nav class="nav flex" role="navigation" aria-label="main navigation">
+            <div class="navbar flex">
+                <h1 class="title">
+                    Hello ~logged_in.username~
+                </h1>
+            </div>
+            <a href="/myvocab" class="navbar-item">
+                My Vocabulary Words
+            </a>
+            <div class="navbar flex">
+                <a href="/new/vocab" class="navbar-item">
+                    New Vocabulary Words
+                </a>
+            </div>
+            <div class="navbar flex">
+                <div class="buttons">
+                    <a href="/logout">
+                        Log Out
+                    </a>
+                </div>
+            </div>
+        </nav>
+    
+    <!-- the real stuff below -->
+    <main>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <!-- main body -->
+        <div class="columns flex">
+            <div class="blank"> </div>
+            <div class="leftcol">
+                <div class="l-1">
+                    <h1 class="title">
+                        This week's Vocabulary Words
+                    </h1>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Vocabulary Word</th>
+                                    <th>Definition</th>
+                                    <th>Week</th>
+                                    <th>Day</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    ~% for vocab in all_vocab %~
+                                    <td>~vocab.spelling~</a></td>
+                                    <td>~vocab.definition~</td>
+                                    <td>Week ~vocab.week_id~</td>
+                                    ~% if vocab.user_id == logged_in.id %~
+                                    <td>
+                                        <a href="/edit/~vocab.id~">Edit |</a>
+                                        <a href="/delete_vocab/~vocab.id~">Delete |</a>
+                                    </td>
+                                    ~% endif %~
+                                </tr>
+                                ~% endfor %~
+                            </tbody>
+                        </table>
+                    </div>
+                
+            
+            ~% for vocab in all_vocab.vocab %~
+            <p>
+                ~vocab.spelling~
+                <a href="/edit/~~vocab.id~~">Edit |</a>
+                <a href="/delete/vocab/~~vocab.id~~">Delete |</a>
+            </p>
+            ~% endfor %~
+        </div>
+        </div>
+        <div class="blank"> </div>
+    </div>
+    </main>
+</div>
+</body>
+
+</html>

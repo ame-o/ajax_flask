@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./flashcards.css">
+    <title>Flashcards</title>
+</head>
+
+<body>
+    <!-- <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <p> </p>
+                <p> </p>
+            </div>
+            <div class="flip-card-back">
+        
+            </div>
+        </div>
+    </div> -->
+    
+    <div class="scene scene--card">
+        <div class="card">
+            <div class="card__face card__face--front">
+                <h1>~vocab.spelling~</h1>
+            </div>
+            <div class="card__face card__face--back">
+                <p>~vocab.definition~</p>
+            </div>
+        </div>
+    </div>
+    <p>
+        <audio controls id="pronounciation">
+            <source src="{{call_word()}}" type="audio/mpeg" id="pronounciation">
+        </audio>
+        <button onclick="call_word()">Click</button>
+    </p>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

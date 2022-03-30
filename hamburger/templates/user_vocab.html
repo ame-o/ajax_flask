@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>This Week's Vocabulary Words</title>
+    <link 
+        rel="stylesheet" 
+        type="text/css" 
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <h1 class="title">
+                Welcome {{logged_in.username}} !
+            </h1>
+            <a href="/dashboard" class="navbar-item">
+                Dashboard
+            </a>
+            <div class="buttons">
+                <a href="/logout" class="button is-light">
+                    Log Out
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- the real stuff below -->
+    <section class="section">
+        <h1 class="title">
+            My Vocabulary Words This Week
+        </h1>
+        {% for vocab in all_vocab.vocab %}
+        <p>
+            {{vocab.spelling}}
+            <a href="/edit/{{vocab.id}}">Edit |</a>
+            <a href="/delete/vocab/{{vocab.id}}">Delete |</a>
+        </p>
+        {% endfor %}
+    </section>
+</body>
+
+</html>
