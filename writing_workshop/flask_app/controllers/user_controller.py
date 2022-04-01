@@ -11,8 +11,7 @@ bcrypt= Bcrypt(app) #use wherever you need it in there
 
 from flask_app.controllers import vocab_controller
 from flask_app.controllers import week_controller
-#IMPORTANT table 1 should be the table that has the info for the connection
-# of one to many
+
 
 #========================================================== 
 # Index / Registration Form and Login Form
@@ -93,19 +92,23 @@ def dashboard():
 #========================================================== 
 # edit existing user --> send to database
 # =========================================================
-@app.route('/user/edit')
-def form_edit_user():
+
+@app.route('/user/edit/<int:id>')
+def form_edit_user(id):
     if "user_id" not in session:
-        return redirect('/')
-    data_query = {
+        return redirect('/lost')
+    user_id = session["user_id"]
+    query_data = {
         "id": session["user_id"]
     }
-    logged_in = User.get_by_id(data_query)
+    logged_in = User.get_by_id(query_data)
+    return render_template("user_edit.html",user_id=user_id, logged_in=logged_in)
 
-    return render_template("update_User.html",logged_in=logged_in)
-
+#==============================================================
 @app.route('/user/edit/process', methods = ['POST'])
 def process_edit_user():
+    if not User.validate_login(request.form):
+        return redirect("/user/edit")
     data = {
         "id": session["user_id"],
         "first_name": request.form["first_name"],
@@ -138,18 +141,3 @@ def delete(id):
     User.delete_instance(query_data)
     return redirect('/dashboard')
 
-# #========================================================== 
-# # Show All User's vocabs  / One to Many
-# # =========================================================
-
-@app.route('/myvocab')
-def show_user_vocabs():
-    # if "user_id" not in session:
-    #     return redirect('/')
-    # data_query = {
-    #     "id": session["user_id"]
-    # }
-    # logged_in = User.get_by_id(data_query)
-    # all_vocab = User.user_vocab(data_query)
-    # return render_template("user_vocab.html", logged_in=logged_in,all_vocab=all_vocab)
-    return render_template("user_vocab.html")

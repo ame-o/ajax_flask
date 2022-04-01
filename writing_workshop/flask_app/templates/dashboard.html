@@ -72,7 +72,7 @@
               <ul>
                 ~
                 <li>
-                  <input type="checkbox" id="vocab_done" name="vocab_done">
+                  <input type="checkbox" id="vocab_done" name="vocab">
                   Spell,define, and write one sentence for each word.
                 </li>
                 ~
@@ -88,37 +88,37 @@
           <div class="essay l-1">
             <h2>Essay Topics</h2>
             {% if logged_in.id ==1 %}
-            <a href="/new/weekly">♡ Add </a>
+            <a href="/new/weekly">♡ Add Weekly Assignments</a>
             <br>
-            <a href="/edit/weekly/{{weekly.id}}">♡ Edit </a>
+            <a href="/edit/weekly/{{weekly.id}}">♡ Edit Weekly Assignments</a>
             <br>
             {% endif %}
-              <input type="checkbox" name="hamburger_1">
-              <p>{{weekly.hamburger_1}}
-              </p>
-              ~
-              {% if not "n/a" %}
-              <p>
-                <input type="checkbox" name="hamburger_2">
-                {{weekly.hamburger_2}}
-              </p>
-              ~
-              {% endif %}
-              <p>
-                <input type="checkbox" name="essay_1">
-                {{weekly.essay_1}}
-              </p>
-              {% if not "n/a" %}>
-              <p>
-                <input type="checkbox" name="essay_2">
-                {{weekly.essay_2}}
-              </p>
-              {% endif %}
-            </ul>
-          </div>
+            <input type="checkbox" name="hamburger_1">
+            <p>{{weekly.hamburger_1}}
+            </p>
+            ~
+            {% if not "n/a" %}
+            <p>
+              <input type="checkbox" name="hamburger_2">
+              {{weekly.hamburger_2}}
+            </p>
+            ~
+            {% endif %}
+            <p>
+              <input type="checkbox" name="essay_1">
+              {{weekly.essay_1}}
+            </p>
+            {% if not "n/a" %}>
+            <p>
+              <input type="checkbox" name="essay_2">
+              {{weekly.essay_2}}
+            </p>
+            {% endif %}
+          </ul>
         </div>
-        <div class="rightcol flex">
-          <div class="r-1">
+      </div>
+      <div class="rightcol flex">
+        <div class="r-1">
             <h3>View All Lessons:</h3>
             <br>
             <a href="/slideshow">♡ View All Lessons</a>

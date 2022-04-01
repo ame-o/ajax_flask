@@ -60,7 +60,7 @@
                         <h2 class="title">
                             Edit Week {{one_week_id}}
                         </h2>
-                        {% if logged_in.id == 1 %}
+                        {% if logged_in.id ==1 or logged_in.id ==2 %}
                         <form action="/edit/weekly/process" method="post">
                             <div>
                                 <input type="hidden" name="vocab" value="{{one_week.vocab}}">
@@ -96,7 +96,7 @@
                         <br>
                         or...
                         <div>
-                            <button class="btn" onclick="/delete{{one_week.id}}">delete week
+                            <button class="btn" onclick="/delete/{{one_week.id}}">delete week
                                 {{one_week.week_id}}?</button>
                             {% endif %}
                         </div>

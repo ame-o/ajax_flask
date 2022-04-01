@@ -50,7 +50,7 @@ def create_vocab():
         return redirect("/new/vocab/")
     query_data = {
                 "spelling" : request.form["spelling"].lower(),
-                "definition" : request.form["definition"],
+                "definition" : request.form["definition"].lower(),
                 "sentence" : request.form["sentence"],
                 "due_date" : request.form["due_date"],
                 "week_id" : request.form["week_id"],
@@ -86,7 +86,7 @@ def process_edit_vocab():
     query_data = {
                 "id" : request.form["id"],
                 "spelling" : request.form["spelling"].lower(),
-                "definition" : request.form["definition"],
+                "definition" : request.form["definition"].lower(),
                 "sentence" : request.form["sentence"],
                 "due_date" : request.form["due_date"],
                 "week_id" : request.form["week_id"]

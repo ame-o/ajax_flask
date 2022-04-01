@@ -12,8 +12,6 @@ class User:
         self.first_name = data["first_name"]
         self.username = data["username"]
         self.password = data["password"]
-        self.user_def = None
-        self.user_sentence = None
 
 # =========================================================
     #Validations
@@ -96,29 +94,29 @@ class User:
 
 
 # =========================================================
-    #join one to all
+    #join all to all
 # =========================================================
-    # @classmethod
-    # def user_bands(cls,data):
-    #     query = """SELECT * FROM users 
-    #     JOIN bands ON users.id= bands.user_id
-    #     WHERE users.id = %(id)s;"""
-    #     results = connectToMySQL("writing_workshop").query_db(query,data)
-    #     if len(results) < 1:
-    #         return False
-    #     user = cls(results[0])
-    #     for dic in results:
-    #         band_data = {
-    #             "id" : dic["bands.id"],
-    #             "name" : dic["name"],
-    #             "genre" : dic["genre"],
-    #             "city" : dic["city"],
-    #             "user_id" : dic["user_id"],
-    #             "created_at" : dic['bands.created_at'],
-    #             "updated_at" : dic['bands.updated_at'],
-    #         }
-    #         band_instance = band_model.Band(band_data)
-    #         user.bands.append(band_instance)
-    #     return user
+@classmethod
+def user_bands(cls,data):
+    query = """SELECT * FROM users 
+    JOIN vocabulary ON users.id= vocabulary.user_id
+    WHERE users.id = %(id)s;"""
+    results = connectToMySQL("writing_workshop").query_db(query,data)
+    if len(results) < 1:
+        return False
+    user = cls(results[0])
+    for dic in results:
+        vocab_data = {
+            "id" : dic["vocabulary.id"],
+            "name" : dic["name"],
+            "genre" : dic["genre"],
+            "city" : dic["city"],
+            "user_id" : dic["user_id"],
+            "created_at" : dic['vocabulary.created_at'],
+            "updated_at" : dic['vocabulary.updated_at'],
+        }
+        vocab_instance = vocab_model.vocab(vocab_data)
+        user.vocabs.append(vocab_instance)
+    return user
 
 

@@ -1,6 +1,6 @@
 from flask_app import app
 #controllers
-from flask_app.controllers import user_controller, vocab_controller, week_controller, project_controller
+from flask_app.controllers import user_controller, vocab_controller, week_controller
 
 
 

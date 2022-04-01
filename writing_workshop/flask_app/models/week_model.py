@@ -5,6 +5,7 @@ from flask_bcrypt import Bcrypt
 bcrypt= Bcrypt(app)
 
 from flask_app.models import user_model
+from flask_app.models import vocab_model
 
 class Weekly:
     def __init__(self,data):
@@ -25,10 +26,10 @@ class Weekly:
     def validate_add(form_data):
         is_valid = True
         if len(form_data['hamburger_1']) < 2:
-            flash("Must be at least 2 characters long!")
+            flash("Please write n/a if not applicable!")
             is_valid=False
         if len(form_data['essay_1']) < 2:
-            flash("Must be at least 2 characters long!")
+            flash("Please write n/a if not applicable!")
             is_valid=False
         if len(form_data['week_id']) < 0:
             flash("Please pick a week!")
@@ -47,7 +48,6 @@ class Weekly:
             weekly= cls(results[0])
             return weekly
 
-    
 # =========================================================
     #create new instance of a band
 # =========================================================
@@ -73,3 +73,7 @@ class Weekly:
     def delete_instance(cls,data):
         query = "DELETE FROM weekly WHERE id = %(id)s;"
         return connectToMySQL("writing_workshop").query_db(query,data)
+
+#=============================================================
+#   join all to all
+#=============================================================

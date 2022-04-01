@@ -73,6 +73,7 @@
                     {% endfor %}
                     {% endif %}
                     {% endwith %}
+                    {% if logged_in.id ==1 or logged_in.id ==2 %}
                     <form action="/edit/vocab/process" method="post">
                         <div>
                             <input type="hidden" name="id" value="{{one_vocab.id}}">
@@ -102,7 +103,7 @@
                     <br><br><br>
                     <button class="btn" href="/delete/vocab/{{one_vocab.id}}">Delete ?</button>
                 </div>
-                
+                {% endif %}
             </div>
             <div class="blank"> </div>
         </div>

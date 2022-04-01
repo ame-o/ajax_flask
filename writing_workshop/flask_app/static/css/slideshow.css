@@ -29,7 +29,6 @@ li{
 }
 
 .btn {
-  /* background-color: rgba(84, 86, 221, 0.993); */
   color:#558ABB;
   border:solid white;
   box-shadow: #558ABB 3px 5px;
@@ -61,24 +60,21 @@ main{
 }
 
 .r-top,.l-1,.l-2 {
-  /* border: 2px solid black; */
   padding: 30px;
   background-color:rgb(238, 218, 255);
   box-shadow: #558ABB 3px 5px;
   border-radius: 5%;
-  display: block;
 }
 .l-1 h1, p{
-  display: block;
 }
 .l-top,.r-1,.r-2{
-  /* border: 2px solid black; */
   padding: 20px;
   background-color:rgb(238, 218, 255);
   box-shadow: #558ABB 3px 5px;
   border-radius: 5%;
   display: block;
 }
+
 * {box-sizing: border-box}
 .mySlides1, .mySlides2 {display: none}
 img {vertical-align: middle;}

@@ -75,7 +75,6 @@ main{
     padding: 30px;
     background-color:rgb(238, 218, 255);
     box-shadow: #558ABB 3px 5px;
-    display: block;
 }
 .l-1 h1, p{
     display: block;
@@ -85,8 +84,13 @@ main{
     padding: 20px;
     background-color:rgb(238, 218, 255);
     box-shadow: #558ABB 3px 5px;
-    display: block;
 }
 .burgerimg img{
     max-width:100%;
+}
+
+@media only screen and (max-width: 620px) {
+    /* For mobile phones: */
+main{
+    width: 100%;
 }

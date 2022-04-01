@@ -5,6 +5,7 @@ from flask_bcrypt import Bcrypt
 bcrypt= Bcrypt(app)
 
 from flask_app.models import user_model
+from flask_app.models import week_model
 
 class Vocab:
     def __init__(self,data):
@@ -29,23 +30,6 @@ class Vocab:
             flash("Definition must be at least 2 characters")
             is_valid=False
         return is_valid
-
-    # @staticmethod
-    # def validate_login(form_data):
-    #     #1st check: does this user exist in the db?
-    #     is_valid = True
-    #     user_in_db = user_model.User.get_by_email(form_data)
-    #     #if not, let them know
-    #     if not user_in_db:
-    #         flash("Invalid Email/Password")
-    #         is_valid = False
-    #     #check password matches what is in db
-    #     if not bcrypt.check_password_hash(user_in_db.password,form_data['password']):
-    #         flash("Invalid Email/Password")
-    #         is_valid = False
-
-    #     return is_valid
-
 
 # =========================================================
     #get all instances in bands and users <- from database

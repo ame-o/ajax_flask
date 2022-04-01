@@ -60,7 +60,7 @@
                         <h2 class="title">
                             Add A New Week
                         </h2>
-                        {% if logged_in.id == 1 %}
+                        {% if logged_in.id ==1 or logged_in.id ==2 %}
                         <form action="/new/weekly/process" method="post">
                         <div>
                                 <input type="hidden" name="vocab" value="1">
