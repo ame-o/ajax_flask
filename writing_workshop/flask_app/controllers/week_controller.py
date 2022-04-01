@@ -25,7 +25,13 @@ def view_slideshow():
 #========================================================== 
 #View One week --> send to database
 # =========================================================
-
+# @app.route('/dateverify', methods=['POST'])
+# def find_week():
+#     week_id = {
+#         "week_id" : int(request.form['currentDate'])
+#     }
+#     Weekly.weekly_week(week_id)
+#     return redirect(f'/view/week/{week_id}')
 
 #========================================================== 
 #Create New week --> send to database
