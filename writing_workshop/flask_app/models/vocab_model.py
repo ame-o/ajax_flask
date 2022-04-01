@@ -32,7 +32,7 @@ class Vocab:
         return is_valid
 
 # =========================================================
-    #get all instances in bands and users <- from database
+    #get all instances in vocabs and users <- from database
 # =========================================================
     @classmethod
     def one_to_one(cls):
@@ -75,16 +75,16 @@ class Vocab:
             vocabulary.creator = user_model.User(results[0])
             return vocabulary
 # =========================================================
-    #create new instance of a band
+    #create new instance of a vocab
 # =========================================================
     @classmethod
     def create_instance(cls,data):
-        query = "INSERT INTO vocabulary (spelling, definition, sentence, due_date, week_id,user_id) VALUES (%(spelling)s,%(definition)s,%(sentence)s,%(due_date)s,%(week_id)s,%(user_id)s,)"
+        query = "INSERT INTO vocabulary (spelling,definition,sentence,due_date,week_id,user_id) VALUES (%(spelling)s,%(definition)s,%(sentence)s,%(due_date)s,%(week_id)s,%(user_id)s);"
         results = connectToMySQL("writing_workshop").query_db(query, data)
         return results
 
 # =========================================================
-    # edit one instance in band -> send to database
+    # edit one instance in vocab -> send to database
 # =========================================================
     @classmethod
     def edit_instance(cls,data):
@@ -93,9 +93,19 @@ class Vocab:
 
 
 # =========================================================
-    #delete an instance in band -> send to database
+    #delete an instance in vocab -> send to database
 # =========================================================
     @classmethod
     def delete_instance(cls,data):
         query = "DELETE FROM vocabulary WHERE id = %(id)s;"
         return connectToMySQL("writing_workshop").query_db(query,data)
+
+#=============================================================
+#   show by week_id
+#=============================================================
+    @classmethod
+    def vocab_week(cls,data):
+        query = "SELECT * from vocabulary WHERE vocabulary.user_id=1 AND vocabulary.week_id = %(week_id)s;"
+        results = connectToMySQL("writing_workshop").query_db(query, data)
+        if results:
+            return results

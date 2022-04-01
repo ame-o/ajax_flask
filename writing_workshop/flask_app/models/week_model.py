@@ -75,5 +75,12 @@ class Weekly:
         return connectToMySQL("writing_workshop").query_db(query,data)
 
 #=============================================================
-#   join all to all
+#   show by week_id
 #=============================================================
+    @classmethod
+    def weekly_week(cls,data):
+        query = "SELECT * from weekly WHERE user_id=1 AND weekly.week_id= %(week_id)s;"
+        results = connectToMySQL("writing_workshop").query_db(query, data)
+        if results:
+            weekly= cls(results[0])
+            return weekly

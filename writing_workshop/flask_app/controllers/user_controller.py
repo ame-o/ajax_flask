@@ -79,13 +79,13 @@ def dashboard():
         "id": session["user_id"]
     }
     data = {
-        "id": int(1)
+        #put the week number in here:
+        "week_id": int(1)
     }
-    all_vocab = Vocab.one_to_one()
-    all_week = Weekly.get_one_instance(data)
+    all_vocab = Vocab.vocab_week(data)
+    all_week = Weekly.weekly_week(data)
     logged_in = User.get_by_id(data_query)
     print(all_week)
-    
     return render_template("dashboard.html",logged_in=logged_in,all_vocab=all_vocab,weekly=all_week)
 
 

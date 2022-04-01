@@ -76,10 +76,12 @@
                   Spell,define, and write one sentence for each word.
                 </li>
                 ~
+                {% if weekly.vocab_story != "n/a" %}
                 <li>
                   <input type="checkbox" id="vocab_story" name="vocab_story">
                   {{weekly.vocab_story}}
                 </li>
+                {% endif %}
               </ul>
               
             </div>
@@ -97,7 +99,7 @@
             <p>{{weekly.hamburger_1}}
             </p>
             ~
-            {% if not "n/a" %}
+            {% if weekly.hamburger_2 != "n/a"  %}
             <p>
               <input type="checkbox" name="hamburger_2">
               {{weekly.hamburger_2}}
@@ -108,7 +110,7 @@
               <input type="checkbox" name="essay_1">
               {{weekly.essay_1}}
             </p>
-            {% if not "n/a" %}>
+            {% if weekly.essay_2 != "n/a"  %}
             <p>
               <input type="checkbox" name="essay_2">
               {{weekly.essay_2}}
@@ -139,6 +141,11 @@
               <li>
                 <a href="https://docs.google.com/document/d/124ZXcjrWFd1tLWXw9ORuZvKUbpEJrXUTooVmmFvBpTg/edit?usp=sharing">♡ Cinderella Project</a>
               </li>
+              {% if weekly.week_id != 1  %}
+              <li>
+                <a href="https://docs.google.com/document/d/12ufuZW9KSBrwhP_E-T3vQHI2dfDm82CzACJ4J34uG80/edit?usp=sharing">♡ Still I Rise - <span style="font-style: italic;">- Maya Angelou</span></a>
+              </li>
+              {% endif %}
             </ul>
           </div>
         </div>

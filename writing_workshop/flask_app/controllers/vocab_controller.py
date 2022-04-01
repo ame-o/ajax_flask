@@ -23,8 +23,12 @@ def one_vocab(id):
     data = {
         "id" : id
     }
+    vw_data = {
+        #put the week number in here:
+        "week_id": int(1)
+    }
+    all_vocab = Vocab.vocab_week(vw_data)
     one_vocab= Vocab.get_one_instance(data)
-    all_vocab = Vocab.one_to_one()
     return render_template('view_vocab.html',user_id=user_id,logged_in=logged_in,one_vocab=one_vocab, all_vocab=all_vocab)
 
 #========================================================== 
@@ -53,8 +57,8 @@ def create_vocab():
                 "definition" : request.form["definition"].lower(),
                 "sentence" : request.form["sentence"],
                 "due_date" : request.form["due_date"],
-                "week_id" : request.form["week_id"],
-                "user_id" : request.form["user_id"]
+                "week_id" : int(request.form["week_id"]),
+                "user_id" : int(request.form["user_id"])
             }
     Vocab.create_instance(query_data)
     return redirect("/dashboard") 
