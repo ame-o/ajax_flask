@@ -93,7 +93,7 @@ def dashboard():
 # edit existing user --> send to database
 # =========================================================
 
-@app.route('/user/edit/<int:id>')
+@app.route('/user/edit/<int:user_id>')
 def form_edit_user(id):
     if "user_id" not in session:
         return redirect('/lost')
